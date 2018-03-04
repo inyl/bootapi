@@ -3,4 +3,4 @@ jdk:
   - oraclejdk9
 
 script:
-  - gradle clean sssemble
+  - gradle clean build
