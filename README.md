@@ -1,5 +1,6 @@
-# boot api
-java 9 version spring boot webflux api
+# boot api 
+[![Build Status](https://travis-ci.org/inyl/bootapi.svg?branch=master)](https://travis-ci.org/inyl/bootapi)  
+java 9 version based spring boot webflux api
 
 ## Specifications
 - Java 9
