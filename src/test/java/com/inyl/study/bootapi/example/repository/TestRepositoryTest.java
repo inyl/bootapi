@@ -41,7 +41,7 @@ public class TestRepositoryTest {
         Optional<User> user = testRepository.findById(1L);
 
         assertThat(user.isPresent()).isTrue();
-        assertThat(user.orElseGet(null)).isEqualTo("admin");
+        assertThat(user.orElseGet(null).getName()).isEqualTo("admin");
     }
 
     @Test
