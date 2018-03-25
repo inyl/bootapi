@@ -1,6 +1,6 @@
 package com.inyl.study.bootapi.example.handler;
 
-import com.inyl.study.bootapi.example.HelloWorld;
+import com.inyl.study.bootapi.example.controller.HelloWorld;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
