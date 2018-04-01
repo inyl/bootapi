@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
@@ -41,6 +42,15 @@ public class UserRouterTest {
     public void testCreate() {
         webTestClient.put().uri("/user")
                 .syncBody(new User()).exchange().expectStatus().isEqualTo(HttpStatus.OK);
+    }
+
+    @Test
+    public void testDelete() {
+        given(userService.delete(1L)).willReturn(Mono.empty());
+
+        webTestClient.delete().uri("/user/1").exchange()
+                .expectStatus().isEqualTo(HttpStatus.OK);
+
     }
 
     @Test

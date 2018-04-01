@@ -1,5 +1,6 @@
 package com.inyl.study.bootapi;
 
+import com.inyl.study.bootapi.example.handler.BoardPostHandler;
 import com.inyl.study.bootapi.example.handler.HelloWorldHandler;
 import com.inyl.study.bootapi.example.handler.UserHandler;
 import org.springframework.context.annotation.Bean;
@@ -9,8 +10,7 @@ import org.springframework.web.reactive.config.WebFluxConfigurer;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
-import static org.springframework.web.reactive.function.server.RequestPredicates.PUT;
+import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 @Configuration
@@ -26,6 +26,13 @@ public class WebConfig implements WebFluxConfigurer {
         return
                 route(GET("/user"), handler::getUserAll)
                         .andRoute(PUT("/user"), handler::create)
-                        .andRoute(GET("/user/{name}"), handler::getUser);
+                        .andRoute(GET("/user/{name}"), handler::getUser)
+                        .andRoute(DELETE("/user/{id}"), handler::delete);
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> boardPostRoutes(BoardPostHandler handler) {
+        return
+                route(GET("/board"), handler::list);
     }
 }
